@@ -1,12 +1,8 @@
 from flask import Flask, render_template
 
-import xml.etree.ElementTree as ET
 import urllib.request
 import xmltodict
-from bs4 import BeautifulSoup
 import ftplib
-
-import requests
 
 app = Flask(__name__)
 
@@ -19,8 +15,7 @@ def view():
 			ftp.login()
 			ftp.cwd('/users/OpenData_DonneesOuvertes/pub/NEOSSAT/XML/')
 			files = []
-			'''ftp.dir(files.append)
-			print(files)'''
+
 			filenames = ftp.nlst()
 
 			iterations = 0
@@ -33,7 +28,7 @@ def view():
 					data = xmltodict.parse(response)
 					all_xml_dict.append(data)
 				if iterations is 5:
-					print(all_xml_dict)
+					print(all_xml_dict[0]['FITSImage']['Attitude'])
 					break
 
 		except ftplib.all_errors as e:

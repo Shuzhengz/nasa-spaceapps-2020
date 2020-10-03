@@ -4,6 +4,10 @@
     <h1>This is where you'll view the map, and can access space data.</h1>
     <p>Here is a message I passed in - {{ message }}.</p>
 
-    {{ test_obj }}
+    {% for obj in test_obj %}
+    	<p>{{ obj['FITSImage']['Attitude'] }}</p>
+    {% endfor %}
+
+    <!--<p>{{ test_obj['FITSImage'] }}</p>-->
 
 {% endblock %}
