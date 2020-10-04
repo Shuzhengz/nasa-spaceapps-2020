@@ -1,6 +1,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Secular+One&display=swap" rel="stylesheet">
 
 <script src="{{url_for('static', filename='sky-sphere.min.js')}}"></script> 
+<script src="{{url_for('static', filename='sky-sphere.min.js')}}"></script> 
 
 <style type="text/css">
 /* GLOBAL */
@@ -146,7 +147,7 @@ p {
 
 	<nav>
 		<h2>BIG SKY</h2>
-    	<h1>NEOSSat Data Viewer</h1>
+    	<h1>HEASARC and NEOSSat Data Viewer</h1>
 	</nav>
 
 	<div class="centered-div" style="margin-bottom: 32px;">
@@ -162,6 +163,37 @@ p {
 				<a class="image-download" href="href">DOWNLOAD IMAGE<img class="image-icon" src="{{url_for('static', filename='image-icon.png')}}"/></a>
 			</div>
     	</div>
+	</div>
+
+	<div class="centered-div">
+		<h2 style="margin-bottom: 16px;">HEASARC IMAGE SEARCH</h2>
+	</div>
+    <div class="card-container">
+		<form name="HEASARC search" id="HEASARC" action="/action_page.php">
+			Type: <select name="type" id="serviceType">
+			  <option value="" selected="selected">Select Type</option>
+			  <option value="" selected="selected">Image</option>
+			  <option value="" selected="selected">SSA</option>
+			</select>
+			<br><br>
+			Wave Band: <select name="waveBand" id="waveBand">
+				<option value="" selected="selected">Select Waveband</option>
+				<option value="" selected="selected">UV</option>
+				<option value="" selected="selected">X-Ray</option>
+				<option value="" selected="selected">Optical</option>
+			</select>
+			<br><br>
+			Keyword: <select name="keyword" id="keyword">
+				<option value="" selected="selected">Select Keyword</option>
+				<option value="" selected="selected">Swift</option>
+			</select>
+			<br><br>
+			<label for="fname">Coordnates:</label>
+			<input type="text" id="coord" name="coord"><br><br>
+			<label for="lname">Size (0.1 - 1):</label>
+			<input type="text" id="size" name="size"><br><br>
+			<input type="submit" value="Search">
+		  </form> 
 	</div>
 	
 	<div class="centered-div">
