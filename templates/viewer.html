@@ -11,6 +11,45 @@
 	color: #0652DD;
 }
 
+/* BUTTON */
+.button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #0652DD;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #013dac}
+
+.button:active {
+  background-color: #013dac;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/* SKY SPHERE */
+.centered-div {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.display-info-card {
+	width: 800px;
+	text-align: left;
+	margin: 0 auto;
+}
+
+#sky {
+	margin: 0 auto;
+	display: block;
+}
+
 .inline-a:hover {
 	text-decoration: underline;
 }
@@ -75,35 +114,12 @@
     	</div>
 	</div>
 
-	<div class="centered-div">
-		<h2 style="margin-bottom: 16px;">HEASARC IMAGE SEARCH</h2>
-	</div>
     <div class="card-container">
-		<form name="HEASARC search" id="HEASARC" action="/action_page.php">
-			Type: <select name="type" id="serviceType">
-			  <option value="" selected="selected">Select Type</option>
-			  <option value="" selected="selected">Image</option>
-			  <option value="" selected="selected">SSA</option>
-			</select>
-			<br><br>
-			Wave Band: <select name="waveBand" id="waveBand">
-				<option value="" selected="selected">Select Waveband</option>
-				<option value="" selected="selected">UV</option>
-				<option value="" selected="selected">X-Ray</option>
-				<option value="" selected="selected">Optical</option>
-			</select>
-			<br><br>
-			Keyword: <select name="keyword" id="keyword">
-				<option value="" selected="selected">Select Keyword</option>
-				<option value="" selected="selected">Swift</option>
-			</select>
-			<br><br>
-			<label for="fname">Coordnates:</label>
-			<input type="text" id="coord" name="coord"><br><br>
-			<label for="lname">Size (0.1 - 1):</label>
-			<input type="text" id="size" name="size"><br><br>
-			<input type="submit" value="Search">
-		  </form> 
+		<form action="/search" style="text-align: center;">
+			<button class="button" type="submit">
+				<h2>HEASARC SEARCH</h2>
+			</button>
+		</form>
 	</div>
 	
 	<div class="centered-div">
