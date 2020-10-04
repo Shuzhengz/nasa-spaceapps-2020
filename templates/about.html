@@ -45,6 +45,16 @@ p {
 	margin-bottom: 32px;
 }
 
+.inline-a {
+	font-weight: 900;
+	text-decoration: none;
+	color: #0652DD;
+}
+
+.inline-a:hover {
+	text-decoration: underline;
+}
+
 </style>
 
 </head>
@@ -91,7 +101,7 @@ p {
 		<h3>How It Works</h3>
 
 		<p>
-			This project uses Flask, a micro web framework written for Python. We manually selected five CSA NEOSSat observations, which are then retrieved within Python, converted into dictionaries, and passed into the HTML template. Inside the HTML webpage, the data is processed, and placed into the "sky sphere" and the list. The "sky sphere" is a JavaScript sky map created by zonia3000, and can be found at http://zonia3000.github.io/SkySphere/.
+			This project uses Flask, a micro web framework written for Python. We manually selected five CSA NEOSSat observations, which are then retrieved within Python, converted into dictionaries, and passed into the HTML template. Inside the HTML webpage, the data is processed, and placed into the "sky sphere" and the list. The "sky sphere" is a JavaScript sky map created by <a class="inline-a" href="https://github.com/zonia3000">Sonia Zorba</a>, and can be found at <a class="inline-a" href="http://zonia3000.github.io/SkySphere/">http://zonia3000.github.io/SkySphere</a>.
 
 		</p>
 

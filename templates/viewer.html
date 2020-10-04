@@ -4,6 +4,18 @@
 
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
 
+<style type="text/css">
+.inline-a {
+	font-weight: 900;
+	text-decoration: none;
+	color: #0652DD;
+}
+
+.inline-a:hover {
+	text-decoration: underline;
+}
+</style>
+
 <body>
 
 	<nav>
@@ -19,6 +31,7 @@
 
 	<div class="centered-div" style="margin-bottom: 32px;">
 		<h2>SKY SPHERE</h2>
+		<p>For best results, view on desktop.</p>
 		<canvas id="sky"></canvas>
 
 		<div class="display-info-card">
@@ -94,7 +107,8 @@
 	</div>
 	
 	<div class="centered-div">
-		<h2 style="margin-bottom: 16px;">LIST OF ALL OBJECTS</h2>
+		<h2>LIST OF RETRIEVED OBJECTS</h2>
+		<p style="margin-bottom: 16px;">Image may not download if resource URL is invalid.</p>
 	</div>
     <div class="card-container">
 		{% for obj in test_obj %}
@@ -107,6 +121,16 @@
 			</div>
 		{% endfor %}
     </div>
+
+    <div class="centered-div" style="width: 1000px; max-width: 100%; margin-bottom: 32px;">
+		<h2>SOURCES</h2>
+
+		<p style="font-size: 1.25rem; padding: 32px; text-align: left;">
+			Sky Sphere - Created by <a class="inline-a" href="https://github.com/zonia3000">Sonia Zorba</a>, located at <a class="inline-a" href="http://zonia3000.github.io/SkySphere/">http://zonia3000.github.io/SkySphere</a>.<br/><br/>
+
+			CSA Resources - NEOSSat Data from <a class="inline-a" href="ftp://data.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/">here</a>.<br/>
+		</p>
+	</div>
 
 </body>
 
