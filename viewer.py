@@ -48,7 +48,7 @@ def view():
 					response = urllib.request.urlopen(url).read()
 					data = xmltodict.parse(response, dict_constructor=dict)
 					all_xml_dict.append(data)
-				if iterations is 1:
+				if iterations == 1:
 					break
 
 		except ftplib.all_errors as e:
