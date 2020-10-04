@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Secular+One&display=swap" rel="stylesheet">
+
+<body>
+  <div class="card-container">
+      <form name="HEASARC search" id="HEASARC" actuin="#" method="post">
+          Type: <select name="type" id="serviceType">
+            <option value="null" selected="selected">Select Type</option>
+            <option value="image" selected="selected">Image</option>
+            <option value="ssa" selected="selected">SSA</option>
+          </select>
+          <br><br>
+          Wave Band: <select name="waveBand" id="waveBand">
+              <option value="null" selected="selected">Select Waveband</option>
+              <option value="uv" selected="selected">UV</option>
+              <option value="x-ray" selected="selected">X-Ray</option>
+              <option value="optical" selected="selected">Optical</option>
+          </select>
+          <br><br>
+          Keyword: <select name="keyword" id="keyword">
+              <option value="null" selected="selected">Select Keyword</option>
+              <option value="swift" selected="selected">Swift</option>
+          </select>
+          <br><br>
+          <label for="coord">Coordnates:</label>
+          <input type="text" id="coord" name="coord"><br><br>
+          <label for="size">Size (0.1 - 1):</label>
+          <input type="text" id="size" name="size"><br><br>
+          <input type="submit" value="Search">
+        </form> 
+  </div>
+</body>
+</html>
