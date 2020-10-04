@@ -79,5 +79,4 @@ sdss_table_jhu.to_table().show_in_notebook(display_length = 5)
 #  Get the filter g version
 file_name=download_file(sdss_table_jhu[1].getdataurl(),cache=True)
 hdu_list = fits.open(file_name)
-
 plt.imshow(hdu_list[0].data, cmap='gray', origin='lower',vmax=1200,vmin=1010)
