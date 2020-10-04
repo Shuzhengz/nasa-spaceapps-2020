@@ -3,7 +3,7 @@ import io
 import base64
 
 
-from flask import Flask, Response, render_template
+from flask import Flask, Response, render_template, request
 
 import urllib.request
 import xmltodict
@@ -41,14 +41,14 @@ def view():
 
 			iterations = 0
 
-			for filename in filenames:
-				if "2018" in filename and iterations < 5:
+			for filename in filenames[::-1]:
+				if iterations < 10:
 					iterations += 1
 					url = 'ftp://data.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/XML/' + filename
 					response = urllib.request.urlopen(url).read()
 					data = xmltodict.parse(response)
 					all_xml_dict.append(data)
-				if iterations is 5:
+				if iterations is 10:
 					break
 
 		except ftplib.all_errors as e:
@@ -79,7 +79,14 @@ def view():
 	image_plt = plt.imshow(image_data, cmap='gray')'''
 
 	'''get_image('ftp://ftp.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/NESS/2015/347-NESS/NEOS_SCI_2015347071100.fits')'''
+
 	return render_template("viewer.html", message="message", test_obj=all_xml_dict)
+
+@app.route('/detail')
+def details():
+	datetime = request.args.get('datetime', default = "-1", type = str)
+	
+	return render_template("detail.html", datetime=datetime)
 
 def get_image(url):
 	'''image_file = download_file('ftp://ftp.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/ASTRO/2018/284/TOI129/FINE_POINT/NEOS_SCI_2018284225800.fits')
