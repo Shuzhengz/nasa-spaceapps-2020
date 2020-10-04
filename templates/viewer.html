@@ -24,6 +24,13 @@ h2 {
 	letter-spacing: 4px;
 }
 
+h3 {
+	margin: 0px;
+	margin-bottom: 8px;
+
+	font-family: 'Secular One', sans-serif;
+}
+
 p {
 	margin: 0px;
 	font-family: 'Noto Sans JP', sans-serif;
@@ -34,11 +41,81 @@ p {
 	padding-top: 0px;
 }
 
+.card-a, .card-a:visited, .card-a:hover {
+	text-decoration: none;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	color: #000000;
+}
+
 .data-card {
+	position: relative;
+
 	padding: 32px;
 	border: 1.5px solid #f1f2f6;
 	border-radius: 12px;
 	margin-bottom: 16px;
+
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-ms-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+
+.data-card:hover {
+	-webkit-box-shadow: 0px 0px 36px -6px #f1f2f6BF;
+	-moz-box-shadow: 0px 0px 36px -6px #f1f2f6BF;
+	box-shadow: 0px 0px 36px -6px #f1f2f6BF;
+
+	cursor: pointer;
+
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-ms-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+
+.image-download {
+	padding: 8px;
+
+	position: absolute;
+	top: 50%;
+	right: 32px;
+	transform: translateY(-50%);
+
+	font-family: 'Secular One', sans-serif;
+	letter-spacing: 2px;
+	text-decoration: none;
+	color: #0652DD;
+
+	border-radius: 8px;
+
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-ms-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+
+.image-download:hover {
+	background: #f1f2f6;
+
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-ms-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+
+.image-icon {
+	width: 28px;
+	height: 28px;
+
+	vertical-align: bottom;
+	margin-left: 8px;
 }
 
 * {
@@ -50,14 +127,19 @@ p {
 
 	<nav>
 		<h2>BIG SKY</h2>
-    	<h1>Data Viewer</h1>
+    	<h1>NEOSSat Data Viewer</h1>
 	</nav>
-	
+
     <div class="card-container">
 		{% for obj in test_obj %}
-			<div class="data-card">
-				<p>{{ obj['FITSImage']['Attitude'] }}</p>
-			</div>
+			<a class="card-a" href="/detail?datetime={{ obj['FITSImage']['ImagingSpecification']['DateOfObservation'] }}">
+				<div class="data-card">
+					<h3>{{ obj['FITSImage']['Image']['PrimeObjectName'] }}</h3>
+					<p>{{ obj['FITSImage']['ImagingSpecification']['DateOfObservation'] }}</p>
+					<!--<p>{{ obj['FITSImage']['Attitude'] }}</p>-->
+					<a class="image-download" href="{{ obj['FITSImage']['Image']['ImageFile'] }}">DOWNLOAD IMAGE<img class="image-icon" src="{{url_for('static', filename='image-icon.png')}}"/></a>
+				</div>
+			</a>
 		{% endfor %}
     </div>
 
