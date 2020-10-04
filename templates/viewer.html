@@ -120,6 +120,23 @@ p {
 	margin-left: 8px;
 }
 
+/* SKY SPHERE */
+.centered-div {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.display-info-card {
+	width: 800px;
+	text-align: left;
+	margin: 0 auto;
+}
+
+#sky {
+	margin: 0 auto;
+	display: block;
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -132,8 +149,26 @@ p {
     	<h1>NEOSSat Data Viewer</h1>
 	</nav>
 
+	<div class="centered-div" style="margin-bottom: 32px;">
+		<h2>SKY SPHERE</h2>
+		<canvas id="sky"></canvas>
 
-
+		<div class="display-info-card">
+			<a class="card-a" href="/detail?datetime=">
+				<div class="data-card">
+					<h3 id="object-name">NAME</h3>
+					<p>Date Observed</p>
+					<p>"Actual Ra at Start of Exposure: - </p>
+					<p>"Actual Dec at Start of Exposure: - </p>
+					<a class="image-download" href="href">DOWNLOAD IMAGE<img class="image-icon" src="{{url_for('static', filename='image-icon.png')}}"/></a>
+				</div>
+			</a>
+    	</div>
+	</div>
+	
+	<div class="centered-div">
+		<h2 style="margin-bottom: 16px;">LIST OF ALL OBJECTS</h2>
+	</div>
     <div class="card-container">
 		{% for obj in test_obj %}
 			<a class="card-a" href="/detail?datetime={{ obj['FITSImage']['ImagingSpecification']['DateOfObservation'] }}">
@@ -147,18 +182,10 @@ p {
 		{% endfor %}
     </div>
 
-    <canvas id="sky"></canvas>
-
 </body>
 
 <script type="text/javascript">
-	var sky = new SkySphere('sky', {
-	    width: 800,
-	    height: 400,
-	    customOnClick: function(data) {
-	        // Define your custom action for added objects.
-	    }
-	});
+	
 
 	//So, for example, if RA is 15h29m18s the value to use is 15 + 29 / 60 + 18 / 3600 = 15.488333.
 	var all_objects = '{{ test_obj | tojson }}'
@@ -228,10 +255,22 @@ p {
 
 	console.log("Dec" + standard_dec_conversion)
 
+	var sky = new SkySphere('sky', {
+	    width: 800,
+	    height: 400,
+	    customOnClick: function(data) {
+	        document.getElementById("object-name").innerHTML = data.name
+	    },
+	    getObjectText: function (data) {
+			return data.name;
+        }
+	});
+
 	sky.addCustomObject(standard_ra_conversion, standard_dec_conversion, {
-		clickData: 'Objecr',
-		color: '#ffe400',
-		radius: 10
+		name: all_objects_parsed[0].FITSImage.Image.PrimeObjectName,
+		clickData: 'Object',
+		color: '#25CCF7',
+		radius: 10,
 	});
 
 	/*for (object in all_objects_parsed) {
