@@ -31,7 +31,14 @@ app = Flask(__name__)
 def view():
 	all_xml_dict = []
 
-	with ftplib.FTP('data.asc-csa.gc.ca') as ftp:
+	manual_urls = ["ftp://data.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/XML/NEOS_SCI_2018284225800-2018-10-15-02-00-25.xml", "ftp://data.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/XML/NEOS_SCI_2018251042635-2018-10-15-01-59-42.xml", "ftp://data.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/XML/NEOS_SCI_2018232040619-2018-10-15-10-49-24.xml", "ftp://data.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/XML/NEOS_SCI_2018033164500-2018-10-15-12-54-57.xml", "ftp://data.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/XML/NEOS_SCI_2017283104140-2018-10-15-12-49-38.xml"]
+
+	for url in manual_urls:
+		response = urllib.request.urlopen(url).read()
+		data = xmltodict.parse(response, dict_constructor=dict)
+		all_xml_dict.append(data)
+
+	'''with ftplib.FTP('data.asc-csa.gc.ca') as ftp:
 		try:
 			ftp.login()
 			ftp.cwd('/users/OpenData_DonneesOuvertes/pub/NEOSSAT/XML/')
@@ -48,11 +55,11 @@ def view():
 					response = urllib.request.urlopen(url).read()
 					data = xmltodict.parse(response, dict_constructor=dict)
 					all_xml_dict.append(data)
-				if iterations is 1:
+				if iterations == 1:
 					break
 
 		except ftplib.all_errors as e:
-			print('FTP error:', e)
+			print('FTP error:', e)'''
 
 	'''get_image("")'''
 	'''print(all_xml_dict[0]['FITSImage']['Image']['ImageFile'])'''
