@@ -2,8 +2,6 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 
-import requests, io
-
 from astropy.table import Table
 import astropy.io.fits as fits
 from astropy.coordinates import SkyCoord

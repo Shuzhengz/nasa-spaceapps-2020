@@ -1,9 +1,8 @@
 import io
-
 import base64
 
-
 from flask import Flask, Response, render_template, request
+from functions import images, spectral
 
 import urllib.request
 import xmltodict
