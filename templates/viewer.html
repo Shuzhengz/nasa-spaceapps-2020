@@ -154,15 +154,13 @@ p {
 		<canvas id="sky"></canvas>
 
 		<div class="display-info-card">
-			<a class="card-a" href="/detail?datetime=">
-				<div class="data-card">
-					<h3 id="object-name">NAME</h3>
-					<p>Date Observed</p>
-					<p>"Actual Ra at Start of Exposure: - </p>
-					<p>"Actual Dec at Start of Exposure: - </p>
-					<a class="image-download" href="href">DOWNLOAD IMAGE<img class="image-icon" src="{{url_for('static', filename='image-icon.png')}}"/></a>
-				</div>
-			</a>
+			<div class="data-card">
+				<h3 id="object-name">NAME</h3>
+				<p>Date Observed</p>
+				<p>"Actual Ra at Start of Exposure: - </p>
+				<p>"Actual Dec at Start of Exposure: - </p>
+				<a class="image-download" href="href">DOWNLOAD IMAGE<img class="image-icon" src="{{url_for('static', filename='image-icon.png')}}"/></a>
+			</div>
     	</div>
 	</div>
 	
@@ -186,14 +184,99 @@ p {
 
 <script type="text/javascript">
 	
-
+var sky = new SkySphere('sky', {
+	    width: 800,
+	    height: 400,
+	    customOnClick: function(data) {
+	        document.getElementById("object-name").innerHTML = data.name
+	    },
+	    getObjectText: function (data) {
+			return data.name;
+        }
+	});
 	//So, for example, if RA is 15h29m18s the value to use is 15 + 29 / 60 + 18 / 3600 = 15.488333.
 	var all_objects = '{{ test_obj | tojson }}'
 	console.log(all_objects)
 	var all_objects_parsed = JSON.parse(all_objects)
 	console.log(all_objects_parsed)
 
-	var ra = all_objects_parsed[0].FITSImage.Attitude.ActualRaAtStartOfExposure
+	for (var i = 0; i < all_objects_parsed.length; i++) {
+		console.log("I is " + i)
+		console.log(all_objects_parsed.length)
+		console.log(all_objects_parsed[i].FITSImage.Attitude.ActualRaAtStartOfExposure)
+
+		var ra = all_objects_parsed[i].FITSImage.Attitude.ActualRaAtStartOfExposure
+		var dec = all_objects_parsed[i].FITSImage.Attitude.ActualDecAtStartOfExposure
+		var name= all_objects_parsed[i].FITSImage.Image.PrimeObjectName
+
+		var numberOfWhitespace = 0
+
+		var one = ""
+		var two = ""
+		var three = ""
+
+		for (var i = 0; i < ra.length; i++) {
+			if (ra.charAt(i) == ' ') {
+				numberOfWhitespace += 1
+				console.log("Char is whitespace")
+			}
+
+			if (numberOfWhitespace < 1) {
+				one += ra.charAt(i)
+				console.log("Adding to one - " + ra.charAt(i))
+			} else if (numberOfWhitespace == 1) {
+				two += ra.charAt(i)
+				console.log("Adding to two - " + ra.charAt(i))
+			} else if (numberOfWhitespace == 2) {
+				three += ra.charAt(i)
+				console.log("Adding to three - " + ra.charAt(i))
+			} else {
+				console.log("numberOfWhitespace is " + numberOfWhitespace)
+			}
+		}
+
+		var done = ""
+		var dtwo = ""
+		var dthree = ""
+
+		var dnumberOfWhitespace = 0
+
+		for (var i = 0; i < dec.length; i++) {
+			if (dec.charAt(i) == ' ') {
+				dnumberOfWhitespace += 1
+				console.log("Char is whitespace")
+			}
+
+			if (dnumberOfWhitespace < 1) {
+				one += dec.charAt(i)
+				console.log("Adding to one - " + dec.charAt(i))
+			} else if (dnumberOfWhitespace == 1) {
+				two += dec.charAt(i)
+				console.log("Adding to two - " + dec.charAt(i))
+			} else if (dnumberOfWhitespace == 2) {
+				three += dec.charAt(i)
+				console.log("Adding to three - " + dec.charAt(i))
+			} else {
+				console.log("numberOfWhitespace is " + dnumberOfWhitespace)
+			}
+		}
+
+
+		var standard_ra_conversion = parseFloat(one) + (parseFloat(two) / 60) + (parseFloat(three) / 3600)
+		var standard_dec_conversion = parseFloat(one) + (parseFloat(two) / 60) + (parseFloat(three) / 3600)
+		console.log("Ra" + standard_ra_conversion)
+
+		console.log("Dec" + standard_dec_conversion)
+
+		sky.addCustomObject(standard_ra_conversion, standard_dec_conversion, {
+		name: name,
+		clickData: 'Object',
+		color: '#25CCF7',
+		radius: 10,
+	});
+	}
+
+	/*var ra = all_objects_parsed[0].FITSImage.Attitude.ActualRaAtStartOfExposure
 	var dec = all_objects_parsed[0].FITSImage.Attitude.ActualDecAtStartOfExposure
 
 	var numberOfWhitespace = 0
@@ -271,7 +354,7 @@ p {
 		clickData: 'Object',
 		color: '#25CCF7',
 		radius: 10,
-	});
+	});*/
 
 	/*for (object in all_objects_parsed) {
 		var ra = object.Attitude
