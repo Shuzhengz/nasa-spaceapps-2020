@@ -8,8 +8,6 @@ from astropy.io import fits
 import astropy.coordinates as coord
 from astropy.utils.data import download_file
 
-import aplpy
-from IPython.display import Image as ipImage, display
 
 import warnings
 
@@ -38,7 +36,8 @@ class Images:
         im_table.to_table()
 
         url = im_table[0].getdataurl()
-        print(url)
+        #print(url)
+        return(url)
 
     def getUltravioletFits(self):
         uv_services = vo.regsearch(servicetype=self.serviceType, waveband=self.waveBand)
@@ -50,8 +49,9 @@ class Images:
 
         im_table = uvot_services[0].search(pos=coords, size= self.size, format='image/fits')
 
-        hdu_list = fits.open(im_table[0].getdataurl())
-        hdu_list.info()
+        fitUrl = im_table[0].getdataurl()
+        #print(fitUrl)
+        return(fitUrl)
 
 #test = Images("image", "uv", "swift", "m51", 0.2)
 #test.getUltravioletUrl()
