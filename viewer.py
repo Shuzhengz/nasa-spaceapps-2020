@@ -74,9 +74,9 @@ def view():
 	pngImageB64String = "data:image/png;base64,"
 	pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')'''
 
-	image_file = download_file('ftp://ftp.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/ASTRO/2018/284/TOI129/FINE_POINT/NEOS_SCI_2018284225800.fits')
+	'''image_file = download_file('ftp://ftp.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/ASTRO/2018/284/TOI129/FINE_POINT/NEOS_SCI_2018284225800.fits')
 	image_data = fits.getdata(image_file, ext=0)
-	image_plt = plt.imshow(image_data, cmap='gray')
+	image_plt = plt.imshow(image_data, cmap='gray')'''
 
 	'''get_image('ftp://ftp.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/NESS/2015/347-NESS/NEOS_SCI_2015347071100.fits')'''
 	return render_template("viewer.html", message="message", test_obj=all_xml_dict)

@@ -1,15 +1,64 @@
-{% block page_title %}Viewer{% endblock %}
-{% block body %}
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Secular+One&display=swap" rel="stylesheet"> 
 
-    <h1>This is where you'll view the map, and can access space data.</h1>
-    <p>Here is a message I passed in - {{ message }}.</p>
+<style type="text/css">
+/* GLOBAL */
+nav {
+	padding: 32px;
+}
 
-    {% for obj in test_obj %}
-    	<p>{{ obj['FITSImage']['Attitude'] }}</p>
-    {% endfor %}
+h1 {
+	margin: 0px;
+	margin-bottom: 8px;
 
-    <img src="{{ image }}"/>
+	font-family: 'Secular One', sans-serif;
+	font-size: 2.5rem;
+	line-height: 2.5rem;
 
-    <!--<p>{{ test_obj['FITSImage'] }}</p>-->
+	color: #0652DD;
+}
 
-{% endblock %}
+h2 {
+	margin: 0px;
+
+	font-family: 'Secular One', sans-serif;
+	letter-spacing: 4px;
+}
+
+p {
+	margin: 0px;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+.card-container {
+	padding: 32px;
+	padding-top: 0px;
+}
+
+.data-card {
+	padding: 32px;
+	border: 1.5px solid #f1f2f6;
+	border-radius: 12px;
+	margin-bottom: 16px;
+}
+
+* {
+	box-sizing: border-box;
+}
+</style>
+
+<body>
+
+	<nav>
+		<h2>BIG SKY</h2>
+    	<h1>Data Viewer</h1>
+	</nav>
+	
+    <div class="card-container">
+		{% for obj in test_obj %}
+			<div class="data-card">
+				<p>{{ obj['FITSImage']['Attitude'] }}</p>
+			</div>
+		{% endfor %}
+    </div>
+
+</body>
