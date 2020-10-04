@@ -1,4 +1,6 @@
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Secular+One&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Secular+One&display=swap" rel="stylesheet">
+
+<script src="{{url_for('static', filename='sky-sphere.min.js')}}"></script> 
 
 <style type="text/css">
 /* GLOBAL */
@@ -130,17 +132,35 @@ p {
     	<h1>NEOSSat Data Viewer</h1>
 	</nav>
 
-    <div class="card-container">
+
+
+    <!--<div class="card-container">
 		{% for obj in test_obj %}
 			<a class="card-a" href="/detail?datetime={{ obj['FITSImage']['ImagingSpecification']['DateOfObservation'] }}">
 				<div class="data-card">
 					<h3>{{ obj['FITSImage']['Image']['PrimeObjectName'] }}</h3>
 					<p>{{ obj['FITSImage']['ImagingSpecification']['DateOfObservation'] }}</p>
-					<!--<p>{{ obj['FITSImage']['Attitude'] }}</p>-->
+					<p>{{ obj['FITSImage']['Attitude'] }}</p>
 					<a class="image-download" href="{{ obj['FITSImage']['Image']['ImageFile'] }}">DOWNLOAD IMAGE<img class="image-icon" src="{{url_for('static', filename='image-icon.png')}}"/></a>
 				</div>
 			</a>
 		{% endfor %}
-    </div>
+    </div>-->
+
+    <canvas id="sky"></canvas>
 
 </body>
+
+<script type="text/javascript">
+	var sky = new SkySphere('sky', {
+	    width: 800,
+	    height: 400,
+	    customOnClick: function(data) {
+	        // Define your custom action for added objects.
+	    }
+	});
+
+	sky.addCustomObject(5.58814, -4.92319, { clickData: 'M 42 - the Great Orion Nebula' });
+	sky.drawSky();
+</script>
+
