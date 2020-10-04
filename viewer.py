@@ -46,7 +46,7 @@ def view():
 					iterations += 1
 					url = 'ftp://data.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/XML/' + filename
 					response = urllib.request.urlopen(url).read()
-					data = xmltodict.parse(response)
+					data = xmltodict.parse(response, dict_constructor=dict)
 					all_xml_dict.append(data)
 				if iterations is 1:
 					break
