@@ -42,13 +42,13 @@ def view():
 			iterations = 0
 
 			for filename in filenames[::-1]:
-				if iterations < 10:
+				if iterations < 1:
 					iterations += 1
 					url = 'ftp://data.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/XML/' + filename
 					response = urllib.request.urlopen(url).read()
 					data = xmltodict.parse(response)
 					all_xml_dict.append(data)
-				if iterations is 10:
+				if iterations is 1:
 					break
 
 		except ftplib.all_errors as e:
