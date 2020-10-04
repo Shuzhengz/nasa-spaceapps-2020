@@ -1,0 +1,191 @@
+/* GLOBAL */
+nav {
+	padding: 32px;
+	position: relative;
+}
+
+h1 {
+	margin: 0px;
+	margin-bottom: 8px;
+
+	font-family: 'Secular One', sans-serif;
+	font-size: 2.5rem;
+	line-height: 2.5rem;
+
+	color: #0652DD;
+}
+
+h2 {
+	margin: 0px;
+
+	font-family: 'Secular One', sans-serif;
+	letter-spacing: 4px;
+}
+
+h3 {
+	margin: 0px;
+	margin-bottom: 8px;
+
+	font-family: 'Secular One', sans-serif;
+}
+
+h4 {
+	margin: 0px;
+	margin-bottom: 8px;
+
+	font-family: 'Secular One', sans-serif;
+}
+
+p {
+	margin: 0px;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+.card-container {
+	padding: 32px;
+	padding-top: 0px;
+
+	width: 1000px;
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.card-a, .card-a:visited, .card-a:hover {
+	text-decoration: none;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	color: #000000;
+}
+
+.data-card {
+	position: relative;
+
+	padding: 32px;
+	border: 1.5px solid #f1f2f6;
+	border-radius: 12px;
+	margin-bottom: 16px;
+
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-ms-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+
+.data-card:hover {
+	-webkit-box-shadow: 0px 0px 36px -6px #f1f2f6BF;
+	-moz-box-shadow: 0px 0px 36px -6px #f1f2f6BF;
+	box-shadow: 0px 0px 36px -6px #f1f2f6BF;
+
+	cursor: pointer;
+
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-ms-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+
+.image-download {
+	padding: 8px;
+
+	position: absolute;
+	top: 50%;
+	right: 32px;
+	transform: translateY(-50%);
+
+	font-family: 'Secular One', sans-serif;
+	letter-spacing: 2px;
+	text-decoration: none;
+	color: #0652DD;
+
+	border-radius: 8px;
+
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-ms-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+
+.image-download:hover {
+	background: #f1f2f6;
+
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-ms-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+
+.image-icon {
+	width: 28px;
+	height: 28px;
+
+	vertical-align: bottom;
+	margin-left: 8px;
+}
+
+/* SKY SPHERE */
+.centered-div {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.display-info-card {
+	width: 800px;
+	text-align: left;
+	margin: 0 auto;
+}
+
+#sky {
+	margin: 0 auto;
+	display: block;
+}
+.information {
+	font-weight: 900;
+}
+
+.display-links-position {
+	position: absolute;
+	top: 32px;
+	right: 32px;
+}
+
+.display-links-position a {
+	position: relative;
+	top: 0;
+	right: 0;
+	display: block;
+	transform: translateY(0);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+/* NAVIGATION */
+nav ul {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	right: 32px;
+	transform: translateY(-50%);
+	list-style: none;
+}
+
+nav ul li {
+	display: inline-block;
+}
+
+nav ul li a {
+	font-family: 'Secular One', sans-serif;
+	font-size: 1.25rem;
+	text-decoration: none;
+	color: black;
+}
+
+nav ul li a:visited {
+	color: black;
+}

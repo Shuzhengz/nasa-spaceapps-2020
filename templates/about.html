@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Big Sky | About</title>
+
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;900&family=Secular+One&display=swap" rel="stylesheet"> 
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+<style type="text/css">
+h3 {
+	font-size: 1.75rem;
+}
+
+p {
+	font-size: 1.25rem;
+}
+
+.person-container {
+	margin: 0 auto;
+	display: table;
+}
+
+.person {
+	text-align: center;
+	display: inline-block;
+	padding: 16px;
+}
+
+.person img {
+	width: 200px;
+	height: 200px;
+	border-radius: 1000px;
+
+	margin-bottom: 8px;
+}
+
+.text-container {
+	width: 1000px;
+	max-width: 100%;
+	margin: 0 auto;
+	padding: 32px;
+}
+
+.text-container p {
+	margin-bottom: 32px;
+}
+
+.inline-a {
+	font-weight: 900;
+	text-decoration: none;
+	color: #0652DD;
+}
+
+.inline-a:hover {
+	text-decoration: underline;
+}
+
+</style>
+
+</head>
+<body>
+
+	<nav>
+		<h2>BIG SKY</h2>
+		<h1>About Our Project</h1>
+
+		<ul>
+			<li><a href="/">HOME</a></li>
+			<li style="margin-left: 32px"><a href="/about" style="color: #0652DD;">ABOUT</a></li>
+			<li style="margin-left: 32px"><a href="https://github.com/GeorgeBerdovskiy/nasa-spaceapps-2020" target="_blank">GITHUB</a></li>
+		</ul>
+	</nav>
+
+	<div class="person-container">
+		<div class="person">
+			<img src="{{url_for('static', filename='Tom.jpg')}}"/>
+			<h3>Shuzheng Zhang</h3>
+		</div>
+
+		<div class="person">
+			<img src="{{url_for('static', filename='George.jpg')}}"/>
+			<h3>George Berdovskiy</h3>
+		</div>
+	</div>
+
+	<div class="text-container">
+		<p>
+			Our names are George and Shuzheng, and we're high school students living in California. We've always been very interested in computer science, and the fascinating applications of programming to real multi-field problems. This the first time we've participated in NASA Space Apps, and we're really excited to tell you about our project!
+		</p>
+
+		<h3>About Our Project</h3>
+
+		<p>
+			Our challenge was, "Hey! What Are You Looking At?" To complete the challenge, we decided to create a web-based application that would allow anybody interested in astronomy to easily view astronomical observations, and encourage them to learn more about astronomy. A user can interact with the "sky sphere" at the top of the page, and click on observations they'd like to learn more about. A card below the map displays some informaion about the observation, and provides a download link for the FITS image file.<br/><br/>
+
+			Below the map is a list of all retrieved objects, and buttons to download their FITS image.<br/><br/>
+
+			The last feature is a SOMETHING.
+		</p>
+
+		<h3>How It Works</h3>
+
+		<p>
+			This project uses Flask, a micro web framework written for Python. We manually selected five CSA NEOSSat observations, which are then retrieved within Python, converted into dictionaries, and passed into the HTML template. Inside the HTML webpage, the data is processed, and placed into the "sky sphere" and the list. The "sky sphere" is a JavaScript sky map created by <a class="inline-a" href="https://github.com/zonia3000">Sonia Zorba</a>, and can be found at <a class="inline-a" href="http://zonia3000.github.io/SkySphere/">http://zonia3000.github.io/SkySphere</a>.
+
+		</p>
+
+		<h3>Prototypes and Future Additions</h3>
+
+		<p>
+			Currently, the application only retrieves five pre-selected NEOSSat observations, because we weren't able to create an efficient system that would retrieve, sort, and display all available observations during the competition weekend.<br/><br/>
+
+			Here's a snippet of code we originally used to automatically retrieve data -<br/><br/>
+
+			Another feature we'd like to add in the future is an option to actually display the FITS image within the web browser, so the user wouldn't have to download and open it locally. We initially tried to do this with matplotlib, but had not much success when we tried to transfer the code into Flask.
+		</p>
+
+		<h3>Overview and Thoughts</h3>
+
+		<p>
+			This was the first NASA Space Apps challenge we participated in, and it was a really great and unique experience! We got to work with very complex astronomical data, and try out programming techniques we've never used before in a very short span of time. We had a lot of fun working on the project, and enjoyed seeing everyone's presentations on Sunday, and we wish all of the other participants the best of luck :)
+		</p>
+	</div>
+
+</body>
+</html>

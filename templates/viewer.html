@@ -1,124 +1,14 @@
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Secular+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;900&family=Secular+One&display=swap" rel="stylesheet"> 
 
 <script src="{{url_for('static', filename='sky-sphere.min.js')}}"></script> 
-<script src="{{url_for('static', filename='search.js')}}"></script> 
+
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
 
 <style type="text/css">
-/* GLOBAL */
-nav {
-	padding: 32px;
-}
-
-h1 {
-	margin: 0px;
-	margin-bottom: 8px;
-
-	font-family: 'Secular One', sans-serif;
-	font-size: 2.5rem;
-	line-height: 2.5rem;
-
-	color: #0652DD;
-}
-
-h2 {
-	margin: 0px;
-
-	font-family: 'Secular One', sans-serif;
-	letter-spacing: 4px;
-}
-
-h3 {
-	margin: 0px;
-	margin-bottom: 8px;
-
-	font-family: 'Secular One', sans-serif;
-}
-
-p {
-	margin: 0px;
-	font-family: 'Noto Sans JP', sans-serif;
-}
-
-.card-container {
-	padding: 32px;
-	padding-top: 0px;
-}
-
-.card-a, .card-a:visited, .card-a:hover {
-	text-decoration: none;
-	appearance: none;
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	color: #000000;
-}
-
-.data-card {
-	position: relative;
-
-	padding: 32px;
-	border: 1.5px solid #f1f2f6;
-	border-radius: 12px;
-	margin-bottom: 16px;
-
-	-webkit-transition: all 0.1s ease-in-out;
-	-moz-transition: all 0.1s ease-in-out;
-	-ms-transition: all 0.1s ease-in-out;
-	-o-transition: all 0.1s ease-in-out;
-	transition: all 0.1s ease-in-out;
-}
-
-.data-card:hover {
-	-webkit-box-shadow: 0px 0px 36px -6px #f1f2f6BF;
-	-moz-box-shadow: 0px 0px 36px -6px #f1f2f6BF;
-	box-shadow: 0px 0px 36px -6px #f1f2f6BF;
-
-	cursor: pointer;
-
-	-webkit-transition: all 0.1s ease-in-out;
-	-moz-transition: all 0.1s ease-in-out;
-	-ms-transition: all 0.1s ease-in-out;
-	-o-transition: all 0.1s ease-in-out;
-	transition: all 0.1s ease-in-out;
-}
-
-.image-download {
-	padding: 8px;
-
-	position: absolute;
-	top: 50%;
-	right: 32px;
-	transform: translateY(-50%);
-
-	font-family: 'Secular One', sans-serif;
-	letter-spacing: 2px;
+.inline-a {
+	font-weight: 900;
 	text-decoration: none;
 	color: #0652DD;
-
-	border-radius: 8px;
-
-	-webkit-transition: all 0.1s ease-in-out;
-	-moz-transition: all 0.1s ease-in-out;
-	-ms-transition: all 0.1s ease-in-out;
-	-o-transition: all 0.1s ease-in-out;
-	transition: all 0.1s ease-in-out;
-}
-
-.image-download:hover {
-	background: #f1f2f6;
-
-	-webkit-transition: all 0.1s ease-in-out;
-	-moz-transition: all 0.1s ease-in-out;
-	-ms-transition: all 0.1s ease-in-out;
-	-o-transition: all 0.1s ease-in-out;
-	transition: all 0.1s ease-in-out;
-}
-
-.image-icon {
-	width: 28px;
-	height: 28px;
-
-	vertical-align: bottom;
-	margin-left: 8px;
 }
 
 /* BUTTON */
@@ -160,8 +50,8 @@ p {
 	display: block;
 }
 
-* {
-	box-sizing: border-box;
+.inline-a:hover {
+	text-decoration: underline;
 }
 </style>
 
@@ -170,19 +60,56 @@ p {
 	<nav>
 		<h2>BIG SKY</h2>
     	<h1>HEASARC and NEOSSat Data Viewer</h1>
+
+    	<ul>
+    		<li><a href="/" style="color: #0652DD;">HOME</a></li>
+    		<li style="margin-left: 32px"><a href="/about">ABOUT</a></li>
+    		<li style="margin-left: 32px"><a href="https://github.com/GeorgeBerdovskiy/nasa-spaceapps-2020" target="_blank">GITHUB</a></li>
+    	</ul>
 	</nav>
 
 	<div class="centered-div" style="margin-bottom: 32px;">
 		<h2>SKY SPHERE</h2>
+		<p>For best results, view on desktop.</p>
 		<canvas id="sky"></canvas>
 
 		<div class="display-info-card">
 			<div class="data-card">
 				<h3 id="object-name">NAME</h3>
-				<p>Date Observed</p>
-				<p>"Actual Ra at Start of Exposure: - </p>
-				<p>"Actual Dec at Start of Exposure: - </p>
-				<a class="image-download" href="href">DOWNLOAD IMAGE<img class="image-icon" src="{{url_for('static', filename='image-icon.png')}}"/></a>
+
+				<h4>Imaging Specification</h4>
+				<p>Satellite Pointing State: <span class="information" id="satellite-pointing-state"></span></p>
+				<p>Operational Amplifier: <span class="information" id="op-amp"></span></p>
+				<p>Binning X Direction: <span class="information" id="bin-x-dir"></span></p>
+				<p>Binning Y Direction: <span class="information" id="bin-y-dir"></span></p>
+				<p>Ccd Temperature (K): <span class="information" id="ccd-temp"></span></p>
+				<p>Date of Observation: <span class="information" id="date-observed"></span></p>
+				<p>Actual Start Time of Observation: <span class="information" id="actual-obs-start"></span></p>
+				<p>Jd Date of Observation: <span class="information" id="jd-date-observed"></span></p>
+				<p>Requested Exposure Start Time: <span class="information" id="req-exp-start"></span></p>
+				<p>Actual Exposure Start Time: <span class="information" id="act-exp-start"></span></p>
+				<p>Exposure Actual Length of Exposure (Seconds): <span class="information" id="act-length-exp"></span></p>
+				<p>Shutter State: <span class="information" id="shutter-state"></span></p>
+				<p>Corner1x: <span class="information" id="c1x"></span></p>
+				<p>Corner1y: <span class="information" id="c1y"></span></p>
+				<p>Corner2x: <span class="information" id="c2x"></span></p>
+				<p style="margin-bottom: 16px">Corner2y: <span class="information" id="c2y"></span></p>
+
+				<h4 id="object-name">Attitude</h4>
+				<p>Actual Ra at Start of Exposure: <span class="information" id="actual-ra-start"></span></p>
+				<p>Actual Dec at Start of Exposure: <span class="information" id="actual-dec-start"></span></p>
+				<p>Actual Roll at Start of Exposure: <span class="information" id="actual-roll-start"></span></p>
+				<p>Minimum Earth Limb Angle: <span class="information" id="min-earth-limb-angle"></span></p>
+				<p>Maximum Earth Limb Angle: <span class="information" id="max-earth-limb-angle"></span></p>
+				<p>Earth Limb Angle: <span class="information" id="earth-limb-angle"></span></p>
+				<p>Minimum Sun Angle: <span class="information" id="min-sun-angle"></span></p>
+				<p>Maximum Sun Angle: <span class="information" id="max-sun-angle"></span></p>
+
+				<div class="display-links-position">
+						<a id="download-image-dynamic" class="image-download display-card" href="#">DOWNLOAD FITS IMAGE<img class="image-icon" src="{{url_for('static', filename='image-icon.png')}}"/></a>
+					</div>
+
+				
 			</div>
     	</div>
 	</div>
@@ -196,20 +123,30 @@ p {
 	</div>
 	
 	<div class="centered-div">
-		<h2 style="margin-bottom: 16px;">LIST OF ALL OBJECTS</h2>
+		<h2>LIST OF RETRIEVED OBJECTS</h2>
+		<p style="margin-bottom: 16px;">Image may not download if resource URL is invalid.</p>
 	</div>
     <div class="card-container">
 		{% for obj in test_obj %}
-			<a class="card-a" href="/detail?datetime={{ obj['FITSImage']['ImagingSpecification']['DateOfObservation'] }}">
-				<div class="data-card">
-					<h3>{{ obj['FITSImage']['Image']['PrimeObjectName'] }}</h3>
-					<p>{{ obj['FITSImage']['ImagingSpecification']['DateOfObservation'] }}</p>
-					<p>{{ obj['FITSImage']['Attitude'] }}</p>
-					<a class="image-download" href="{{ obj['FITSImage']['Image']['ImageFile'] }}">DOWNLOAD IMAGE<img class="image-icon" src="{{url_for('static', filename='image-icon.png')}}"/></a>
-				</div>
-			</a>
+			<div class="data-card">
+				<h3>{{ obj['FITSImage']['Image']['PrimeObjectName'] }}</h3>
+				<p>{{ obj['FITSImage']['ImagingSpecification']['DateOfObservation'] }}</p>
+
+				<a class="image-download display-card" href="{{ obj['FITSImage']['Image']['ImageFile'] }}">DOWNLOAD FITS IMAGE<img class="image-icon" src="{{url_for('static', filename='image-icon.png')}}"/></a>
+				
+			</div>
 		{% endfor %}
     </div>
+
+    <div class="centered-div" style="width: 1000px; max-width: 100%; margin-bottom: 32px;">
+		<h2>SOURCES</h2>
+
+		<p style="font-size: 1.25rem; padding: 32px; text-align: left;">
+			Sky Sphere - Created by <a class="inline-a" href="https://github.com/zonia3000">Sonia Zorba</a>, located at <a class="inline-a" href="http://zonia3000.github.io/SkySphere/">http://zonia3000.github.io/SkySphere</a>.<br/><br/>
+
+			CSA Resources - NEOSSat Data from <a class="inline-a" href="ftp://data.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/">here</a>.<br/>
+		</p>
+	</div>
 
 </body>
 
@@ -220,6 +157,34 @@ var sky = new SkySphere('sky', {
 	    height: 400,
 	    customOnClick: function(data) {
 	        document.getElementById("object-name").innerHTML = data.clickData.FITSImage.Image.PrimeObjectName
+
+	        document.getElementById("satellite-pointing-state").innerHTML = data.clickData.FITSImage.ImagingSpecification.SatellitePointingState
+	        document.getElementById("op-amp").innerHTML = data.clickData.FITSImage.ImagingSpecification.OperationalAmplifier
+	        document.getElementById("bin-x-dir").innerHTML = data.clickData.FITSImage.ImagingSpecification.BinningXdirection
+	        document.getElementById("bin-y-dir").innerHTML = data.clickData.FITSImage.ImagingSpecification.BinningYdirection
+	        document.getElementById("ccd-temp").innerHTML = data.clickData.FITSImage.ImagingSpecification.CcdTemperatureK
+	        document.getElementById("date-observed").innerHTML = data.clickData.FITSImage.ImagingSpecification.DateOfObservation
+	        document.getElementById("actual-obs-start").innerHTML = data.clickData.FITSImage.ImagingSpecification.ActualStartTimeOfObservation
+	        document.getElementById("jd-date-observed").innerHTML = data.clickData.FITSImage.ImagingSpecification.JdDateOfObs
+	        document.getElementById("req-exp-start").innerHTML = data.clickData.FITSImage.ImagingSpecification.RequestedExposureStartTime
+	        document.getElementById("act-exp-start").innerHTML = data.clickData.FITSImage.ImagingSpecification.ActualExposureStartTime
+	        document.getElementById("act-length-exp").innerHTML = data.clickData.FITSImage.ImagingSpecification.ExposureActualLengthOfExposureSeconds
+	        document.getElementById("shutter-state").innerHTML = data.clickData.FITSImage.ImagingSpecification.ShutterState
+	        document.getElementById("c1x").innerHTML = data.clickData.FITSImage.ImagingSpecification.Corner1x
+	        document.getElementById("c1y").innerHTML = data.clickData.FITSImage.ImagingSpecification.Corner1y
+	        document.getElementById("c2x").innerHTML = data.clickData.FITSImage.ImagingSpecification.Corner2x
+	        document.getElementById("c2y").innerHTML = data.clickData.FITSImage.ImagingSpecification.Corner2y
+
+	        document.getElementById("actual-ra-start").innerHTML = data.clickData.FITSImage.Attitude.ActualRaAtStartOfExposure
+	        document.getElementById("actual-dec-start").innerHTML = data.clickData.FITSImage.Attitude.ActualDecAtStartOfExposure
+	        document.getElementById("actual-roll-start").innerHTML = data.clickData.FITSImage.Attitude.ActualRollAtStartOfExposure
+	        document.getElementById("min-earth-limb-angle").innerHTML = data.clickData.FITSImage.Attitude.MinimumEarthLimbAngle
+	        document.getElementById("max-earth-limb-angle").innerHTML = data.clickData.FITSImage.Attitude.MaximumEarthLimbAngle
+	        document.getElementById("earth-limb-angle").innerHTML = data.clickData.FITSImage.Attitude.EarthLimbAngle
+	        document.getElementById("min-sun-angle").innerHTML = data.clickData.FITSImage.Attitude.MinimumSunAngle
+	        document.getElementById("max-sun-angle").innerHTML = data.clickData.FITSImage.Attitude.MaximumSunAngle
+
+	        document.getElementById("download-image-dynamic").href = data.clickData.FITSImage.Image.ImageFile
 	    },
 	    getObjectText: function (data) {
 			return data.name;
@@ -292,7 +257,6 @@ var sky = new SkySphere('sky', {
 			}
 		}
 
-
 		var standard_ra_conversion = parseFloat(one) + (parseFloat(two) / 60) + (parseFloat(three) / 3600)
 		var standard_dec_conversion = parseFloat(one) + (parseFloat(two) / 60) + (parseFloat(three) / 3600)
 		console.log("Ra" + standard_ra_conversion)
@@ -306,91 +270,6 @@ var sky = new SkySphere('sky', {
 			radius: 10,
 		});
 	}
-
-	/*var ra = all_objects_parsed[0].FITSImage.Attitude.ActualRaAtStartOfExposure
-	var dec = all_objects_parsed[0].FITSImage.Attitude.ActualDecAtStartOfExposure
-
-	var numberOfWhitespace = 0
-
-	var one = ""
-	var two = ""
-	var three = ""
-
-	for (var i = 0; i < ra.length; i++) {
-		if (ra.charAt(i) == ' ') {
-			numberOfWhitespace += 1
-			console.log("Char is whitespace")
-		}
-
-		if (numberOfWhitespace < 1) {
-			one += ra.charAt(i)
-			console.log("Adding to one - " + ra.charAt(i))
-		} else if (numberOfWhitespace == 1) {
-			two += ra.charAt(i)
-			console.log("Adding to two - " + ra.charAt(i))
-		} else if (numberOfWhitespace == 2) {
-			three += ra.charAt(i)
-			console.log("Adding to three - " + ra.charAt(i))
-		} else {
-			console.log("numberOfWhitespace is " + numberOfWhitespace)
-		}
-	}
-
-	var done = ""
-	var dtwo = ""
-	var dthree = ""
-
-	var dnumberOfWhitespace = 0
-
-	for (var i = 0; i < dec.length; i++) {
-		if (dec.charAt(i) == ' ') {
-			dnumberOfWhitespace += 1
-			console.log("Char is whitespace")
-		}
-
-		if (dnumberOfWhitespace < 1) {
-			one += dec.charAt(i)
-			console.log("Adding to one - " + dec.charAt(i))
-		} else if (dnumberOfWhitespace == 1) {
-			two += dec.charAt(i)
-			console.log("Adding to two - " + dec.charAt(i))
-		} else if (dnumberOfWhitespace == 2) {
-			three += dec.charAt(i)
-			console.log("Adding to three - " + dec.charAt(i))
-		} else {
-			console.log("numberOfWhitespace is " + dnumberOfWhitespace)
-		}
-	}
-
-
-	var standard_ra_conversion = parseFloat(one) + (parseFloat(two) / 60) + (parseFloat(three) / 3600)
-	var standard_dec_conversion = parseFloat(one) + (parseFloat(two) / 60) + (parseFloat(three) / 3600)
-	console.log("Ra" + standard_ra_conversion)
-
-	console.log("Dec" + standard_dec_conversion)
-
-	var sky = new SkySphere('sky', {
-	    width: 800,
-	    height: 400,
-	    customOnClick: function(data) {
-	        document.getElementById("object-name").innerHTML = data.name
-	    },
-	    getObjectText: function (data) {
-			return data.name;
-        }
-	});
-
-	sky.addCustomObject(standard_ra_conversion, standard_dec_conversion, {
-		name: all_objects_parsed[0].FITSImage.Image.PrimeObjectName,
-		clickData: 'Object',
-		color: '#25CCF7',
-		radius: 10,
-	});*/
-
-	/*for (object in all_objects_parsed) {
-		var ra = object.Attitude
-		console.log(ra)
-	}*/
 
 	sky.addCustomObject(3.58814, -4.92319, {
 		name: 'Sun',

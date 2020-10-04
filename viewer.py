@@ -101,6 +101,10 @@ def details():
     return render_template("detail.html", datetime=datetime)
 
 
+@app.route('/about')
+def about():
+	return render_template("about.html")
+
 def get_image(url):
     '''image_file = download_file('ftp://ftp.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/ASTRO/2018/284/TOI129/FINE_POINT/NEOS_SCI_2018284225800.fits')
     image_data = fits.getdata(image_file, ext=0)
