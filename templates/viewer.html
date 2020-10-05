@@ -1,123 +1,128 @@
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;900&family=Secular+One&display=swap" rel="stylesheet"> 
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Big Sky | Viewer</title>
 
-<script src="{{url_for('static', filename='sky-sphere.min.js')}}"></script> 
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;900&family=Secular+One&display=swap" rel="stylesheet"> 
 
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+	<script src="{{url_for('static', filename='sky-sphere.min.js')}}"></script> 
 
-<style type="text/css">
-.inline-a {
-	font-weight: 900;
-	text-decoration: none;
-	color: #0652DD;
-}
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
 
-/* BUTTON */
-.button {
-  padding: 15px 25px;
-  font-size: 24px;
-  text-align: center;
-  cursor: pointer;
-  outline: none;
-  color: #fff;
-  background-color: #0652DD;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
-}
+	<style type="text/css">
+		.inline-a {
+			font-weight: 900;
+			text-decoration: none;
+			color: #0652DD;
+		}
 
-.button:hover {background-color: #013dac}
+		/* BUTTON */
+		.button {
+		  padding: 15px 25px;
+		  font-size: 24px;
+		  text-align: center;
+		  cursor: pointer;
+		  outline: none;
+		  color: #fff;
+		  background-color: #0652DD;
+		  border: none;
+		  border-radius: 15px;
+		  box-shadow: 0 9px #999;
+		}
 
-.button:active {
-  background-color: #013dac;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
+		.button:hover {background-color: #013dac}
 
-/* SKY SPHERE */
-.centered-div {
-	margin: 0 auto;
-	text-align: center;
-}
+		.button:active {
+		  background-color: #013dac;
+		  box-shadow: 0 5px #666;
+		  transform: translateY(4px);
+		}
 
-.display-info-card {
-	width: 800px;
-	text-align: left;
-	margin: 0 auto;
-}
+		/* SKY SPHERE */
+		.centered-div {
+			margin: 0 auto;
+			text-align: center;
+		}
 
-#sky {
-	margin: 0 auto;
-	display: block;
-}
+		.display-info-card {
+			width: 800px;
+			text-align: left;
+			margin: 0 auto;
+		}
 
-.inline-a:hover {
-	text-decoration: underline;
-}
-</style>
+		#sky {
+			margin: 0 auto;
+			display: block;
+		}
 
-<style type="text/css">
-label {
-  font-family: 'Secular One', sans-serif;
-}
+		.inline-a:hover {
+			text-decoration: underline;
+		}
+	</style>
 
-input[type="text"] {
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
+	<style type="text/css">
+		label {
+			font-family: 'Secular One', sans-serif;
+		}
 
-  padding: 16px;
+		input[type="text"] {
+			appearance: none;
+			-moz-appearance: none;
+			-webkit-appearance: none;
 
-  background-color: #f1f2f6;
-  outline: none;
-  border: none;
-  border-radius: 6px;
+			padding: 16px;
 
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 1rem;
-}
+			background-color: #f1f2f6;
+			outline: none;
+			border: none;
+			border-radius: 6px;
 
-input[type="submit"] {
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
+			font-family: 'Noto Sans JP', sans-serif;
+			font-size: 1rem;
+		}
 
-  padding: 16px;
+		input[type="submit"] {
+			appearance: none;
+			-moz-appearance: none;
+			-webkit-appearance: none;
 
-  background-color: #0652DD;
-  border: none;
-  outline: none;
-  border-radius: 8px;
+			padding: 16px;
 
-  width: 300px;
+			background-color: #0652DD;
+			border: none;
+			outline: none;
+			border-radius: 8px;
 
-  font-family: 'Secular One', sans-serif;
-  font-size: 1.25rem;
-  letter-spacing: 4px;
-  color: white;
+			width: 300px;
 
-  cursor: pointer;
+			font-family: 'Secular One', sans-serif;
+			font-size: 1.25rem;
+			letter-spacing: 4px;
+			color: white;
 
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -ms-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
+			cursor: pointer;
 
-input[type="submit"]:hover {
-  -webkit-box-shadow: 0px 0px 36px -6px #0652DDBF;
-  -moz-box-shadow: 0px 0px 36px -6px #0652DDBF;
-  box-shadow: 0px 0px 36px -6px #0652DDBF;
+			-webkit-transition: all 0.25s ease-in-out;
+			-moz-transition: all 0.25s ease-in-out;
+			-ms-transition: all 0.25s ease-in-out;
+			-o-transition: all 0.25s ease-in-out;
+			transition: all 0.25s ease-in-out;
+		}
 
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -ms-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
+		input[type="submit"]:hover {
+			-webkit-box-shadow: 0px 0px 36px -6px #0652DDBF;
+			-moz-box-shadow: 0px 0px 36px -6px #0652DDBF;
+			box-shadow: 0px 0px 36px -6px #0652DDBF;
 
-</style>
+			-webkit-transition: all 0.25s ease-in-out;
+			-moz-transition: all 0.25s ease-in-out;
+			-ms-transition: all 0.25s ease-in-out;
+			-o-transition: all 0.25s ease-in-out;
+			transition: all 0.25s ease-in-out;
+		}
+	</style>
 
+</head>
 <body>
 
 	<nav>
@@ -251,7 +256,6 @@ input[type="submit"]:hover {
 </body>
 
 <script type="text/javascript">
-	
 var sky = new SkySphere('sky', {
 	    width: 800,
 	    height: 400,
@@ -380,4 +384,4 @@ var sky = new SkySphere('sky', {
 
 	sky.drawSky();
 </script>
-
+</html>
