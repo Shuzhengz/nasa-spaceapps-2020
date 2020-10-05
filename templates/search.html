@@ -68,12 +68,18 @@ input[type="submit"]:hover {
 <body>
   <div class="card-container">
       <form name="HEASARC search" id="HEASARC" actuin="#" method="post">
+<<<<<<< HEAD
           <label>Type</label> <select name="type" id="serviceType">
             <option value="null" selected="selected">Select Type</option>
+=======
+          Type: <select name="type" id="serviceType">
+>>>>>>> c341b4022e27095e257b1c2f0377ee7e146ee171
             <option value="image" selected="selected">Image</option>
             <option value="ssa" selected="selected">SSA</option>
+            <option value="null" selected="selected">Select Type</option>
           </select>
           <br><br>
+<<<<<<< HEAD
           <label>Wave Band</label> <select name="waveBand" id="waveBand">
               <option value="null" selected="selected">Select Waveband</option>
               <option value="uv" selected="selected">UV</option>
@@ -84,6 +90,25 @@ input[type="submit"]:hover {
           <label>Keyword</label> <select name="keyword" id="keyword">
               <option value="null" selected="selected">Select Keyword</option>
               <option value="swift" selected="selected">Swift</option>
+=======
+          Wave Band: <select name="waveBand" id="waveBand">
+            <option value="uv" selected="selected">UV</option>
+            <option value="x-ray" selected="selected">X-Ray</option>
+            <option value="optical" selected="selected">Optical</option>
+            <option value="null" selected="selected">Select Waveband</option>
+          </select>
+          <br><br>
+          Keyword: <select name="keyword" id="keyword">
+            <option value="chandra" selected="selected">Chandra</option>
+            <option value="hst" selected="selected">HST</option>
+            <option value="ixpe" selected="selected">IXPE (Experimental)</option>
+            <option value="nicer" selected="selected">NICER</option>
+            <option value="nustar" selected="selected">NuSTAR</option>
+            <option value="swift" selected="selected">Swift</option>
+            <option value="xmm-newton" selected="selected">NMM-Newton</option>
+            <option value="xrism" selected="selected">XRISM</option>
+            <option value="null" selected="selected">Select Keyword</option>
+>>>>>>> c341b4022e27095e257b1c2f0377ee7e146ee171
           </select>
           <br><br>
           <label for="coord">Object Name</label><br/>

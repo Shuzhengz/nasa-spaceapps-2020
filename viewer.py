@@ -39,7 +39,7 @@ def view():
 			spe = Spectral(type, waveBand, keyword, coord, size)
 			img_url = " "
 			url = spe.getSpectral()
-		elif type == "image" and waveBand == "uv":
+		elif type == "image" and (waveBand == "uv" or "optical"):
 			img = Images(type, waveBand, keyword, coord, size)
 			img_url = img.getUltravioletUrl()
 			url = img.getUltravioletFits()

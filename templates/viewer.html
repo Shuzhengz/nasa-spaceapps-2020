@@ -55,6 +55,69 @@
 }
 </style>
 
+<style type="text/css">
+label {
+  font-family: 'Secular One', sans-serif;
+}
+
+input[type="text"] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
+  padding: 16px;
+
+  background-color: #f1f2f6;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 1rem;
+}
+
+input[type="submit"] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
+  padding: 16px;
+
+  background-color: #0652DD;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+
+  width: 300px;
+
+  font-family: 'Secular One', sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 4px;
+  color: white;
+
+  cursor: pointer;
+
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+input[type="submit"]:hover {
+  -webkit-box-shadow: 0px 0px 36px -6px #0652DDBF;
+  -moz-box-shadow: 0px 0px 36px -6px #0652DDBF;
+  box-shadow: 0px 0px 36px -6px #0652DDBF;
+
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+</style>
+
 <body>
 
 	<nav>
@@ -114,8 +177,15 @@
     	</div>
 	</div>
 
+	<div class="centered-div">
+		<h2 style="margin-bottom: 16px;">HEASARC SEARCH</h2>
+	</div>
+
     <div class="card-container">
-	      <form name="HEASARC search" id="HEASARC" actuin="#" method="post">
+
+    		<div class="data-card">
+
+	      <form name="HEASARC Search" id="HEASARC" actuin="#" method="post">
 	          <label>Type</label> <select name="type" id="serviceType">
 	            <option value="null" selected="selected">Select Type</option>
 	            <option value="image" selected="selected">Image</option>
@@ -140,6 +210,7 @@
 	          <input type="text" id="size" name="size"><br><br>
 	          <input type="submit" value="SEARCH">
 	        </form> 
+	    </div>
 	  </div>
 	
 	<div class="centered-div">
