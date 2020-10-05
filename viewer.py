@@ -2,7 +2,7 @@ import io
 import base64
 
 from flask import Flask, Response, render_template, request, redirect, url_for
-from functions import images, spectral
+from functions import Images, Spectral
 
 import urllib.request
 import xmltodict
@@ -103,7 +103,8 @@ def details():
 
 @app.route('/about')
 def about():
-	return render_template("about.html")
+    return render_template("about.html")
+
 
 def get_image(url):
     '''image_file = download_file('ftp://ftp.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/ASTRO/2018/284/TOI129/FINE_POINT/NEOS_SCI_2018284225800.fits')
@@ -114,10 +115,33 @@ def get_image(url):
 @app.route("/search", methods=["POST", "GET"])
 def search():
     if request.method == "POST":
-        user = request.form["type"]
-        return redirect(url_for("user", usr=user))
+        type = str(request.form["type"])
+        waveBand = str(request.form["waveBand"])
+        keyword = str(request.form["keyword"])
+        coord = str(request.form["coord"])
+        size = float(request.form["size"])
+
+        if type == "ssa" and waveBand == "x-ray":
+            spe = Spectral(type, waveBand, keyword, coord, size)
+            img_url = " "
+            url = spe.getSpectral()
+        elif type == "image" and waveBand == "uv":
+            img = Images(type, waveBand, keyword, coord, size)
+            img_url = img.getUltravioletUrl()
+            url = img.getUltravioletFits()
+        else:
+            img_url = " "
+            url = "null"
+        return redirect(url_for("result", name="Search Result", jpg_url=str(img_url), fits_url=str(url)))
     else:
         return render_template("search.html")
+
+
+@app.route("/result/<name>")
+def result(name, jpg_url, fits_url):
+    return f"<h1>{jpg_url}</h1>"
+    #return f"<h1>{name}</h1><img src='{jpg_url}' alt='No Data'><p><a href='{fits_url}'>Download FITS</a></p>"
+
 
 
 if __name__ == '__main__':

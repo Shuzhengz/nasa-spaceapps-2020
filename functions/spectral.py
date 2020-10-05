@@ -25,10 +25,8 @@ class Spectral:
 
     def getSpectral(self):
         services = vo.regsearch(servicetype=self.serviceType, waveband=self.waveBand)
-        services.to_table()['ivoid', 'short_name']
 
         chandra_service = [s for s in services if 'Chandra' in s.short_name][0]
-        chandra_service.access_url
 
         Pos = SkyCoord.from_name(self.name)
 
