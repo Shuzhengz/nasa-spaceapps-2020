@@ -132,15 +132,18 @@ def search():
         else:
             img_url = " "
             url = "null"
-        return redirect(url_for("result", name="Search Result", jpg_url=str(img_url), fits_url=str(url)))
+        #return redirect(url_for("result", name="Search Result", jpg_url=str(img_url), fits_url=str(url)))
+        #return redirect(url_for("result"), name="Search Result")
+
+        return render_template("search-results.html", jpg_url=img_url)
     else:
         return render_template("search.html")
 
 
-@app.route("/result/<name>")
-def result(name, jpg_url, fits_url):
-    return f"<h1>{jpg_url}</h1>"
-    #return f"<h1>{name}</h1><img src='{jpg_url}' alt='No Data'><p><a href='{fits_url}'>Download FITS</a></p>"
+'''@app.route("/search/results")
+def result():
+    return f"<h1>Test</h1>"'''
+    #return f"<h1>{name}</h1><img src='{jpg_url}' alt='No Data'><p><a href='{fits_url}'>Download FITS</a></p>"{jpg_url}name, jpg_url, fits_url
 
 
 

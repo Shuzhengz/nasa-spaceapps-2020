@@ -2,7 +2,7 @@ import numpy as np
 import pyvo as vo
 import matplotlib
 import matplotlib.pyplot as plt
-from pasta.augment import inline
+#from pasta.augment import inline
 
 from astropy.io import fits
 import astropy.coordinates as coord
