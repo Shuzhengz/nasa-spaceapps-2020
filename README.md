@@ -10,7 +10,7 @@ Set up instructions:
 3. Install packages using pip, you can see the full list in `requirements.txt`
     1. You can install them manually, or navigate to this directory in terminal/command prompt and type in:
         1. `pip install -r requirements.txt`
-4. Navigate to directory `nasa-spaceapps-2020/app_directory` in terminal/command prompt
+4. Navigate to directory `nasa-spaceapps-2020` in terminal/command prompt
 5. Run the webapp using `python viewer.py`
     1. If you see line `Running on http://127.0.0.1:5000/` in the terminal, this indicates that the app is working
     2. If not, check for missing packages and dependencies
