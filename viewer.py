@@ -47,7 +47,7 @@ def view():
 			img_url = " "
 			url = "null"
 
-		return render_template("search-results.html", jpg_url=img_url)
+		return render_template("search-results.html", jpg_url=img_url, fits_url=url)
 	else:
 		all_xml_dict = []
 
