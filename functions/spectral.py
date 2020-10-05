@@ -2,8 +2,6 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 
-import requests, io
-
 from astropy.table import Table
 import astropy.io.fits as fits
 from astropy.coordinates import SkyCoord
@@ -27,10 +25,8 @@ class Spectral:
 
     def getSpectral(self):
         services = vo.regsearch(servicetype=self.serviceType, waveband=self.waveBand)
-        services.to_table()['ivoid', 'short_name']
 
         chandra_service = [s for s in services if 'Chandra' in s.short_name][0]
-        chandra_service.access_url
 
         Pos = SkyCoord.from_name(self.name)
 

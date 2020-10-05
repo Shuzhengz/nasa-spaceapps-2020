@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Big Sky | Search Results</title>
+
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;900&family=Secular+One&display=swap" rel="stylesheet"> 
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+
+	<style type="text/css">
+		body {
+			margin: 0;
+			padding: 32px;
+		}
+
+		.data-card {
+			width: 800px;
+			max-width: 100%;
+
+			margin: 0 auto;
+		}
+
+		.retrieved-image {
+			border-radius: 8px;
+			width: 300px;
+			height: 300px;
+		}
+
+		.image-download {
+			padding: 8px;
+
+			position: absolute;
+			right: 32px;
+			top: 32px;
+			transform: translateY(0);
+
+			font-family: 'Secular One', sans-serif;
+			letter-spacing: 2px;
+			text-decoration: none;
+			color: #0652DD;
+
+			border-radius: 8px;
+
+			-webkit-transition: all 0.1s ease-in-out;
+			-moz-transition: all 0.1s ease-in-out;
+			-ms-transition: all 0.1s ease-in-out;
+			-o-transition: all 0.1s ease-in-out;
+			transition: all 0.1s ease-in-out;
+		}
+
+		.image-download:hover {
+			background: #f1f2f6;
+
+			-webkit-transition: all 0.1s ease-in-out;
+			-moz-transition: all 0.1s ease-in-out;
+			-ms-transition: all 0.1s ease-in-out;
+			-o-transition: all 0.1s ease-in-out;
+			transition: all 0.1s ease-in-out;
+		}
+	</style>
+</head>
+<body>
+
+<div class="data-card">
+	<img class="retrieved-image" src="{{ jpg_url }}"/>
+
+	<a class="image-download" href="{{ fits_url }}">DOWNLOAD FITS IMAGE<img class="image-icon" src="{{url_for('static', filename='image-icon.png')}}"/></a>
+</div>
+
+</body>
+</html>
