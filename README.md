@@ -5,7 +5,7 @@ nasa-spaceapps-2020
 By George Berdovskiy and Shuzheng (Tom) Zhang
 
 Set up instructions:
-1. Install pip, see how to do it at https://pip.pypa.io/en/stable/installing/
+1. Install pip, see how to do it at https://pip.pypa.io/en/stable/installation/
 2. Install flask using `pip install flask`
 3. Install packages using pip, you can see the full list in `requirements.txt`
     1. You can install them manually, or navigate to this directory in terminal/command prompt and type in:
